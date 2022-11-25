@@ -70,8 +70,8 @@ for(seed.num in 1:n.rep){
   
   # Run RSSS for hierarchical nonlocal prior
   set.seed(seed.num)
-  H_fit_de_RSSS = H_RSSS(X, y, lambda1, lambda2, ind_fun=H_pmom_laplace, N=150, C0=1, verbose=FALSE)
-  # H_fit_de_RSSS = H_RSSS(X, y, lambda1, lambda2, ind_fun=H_pmom_laplace, N=150, C0=1, verbose=FALSE, method="working") # use working residual
+  H_fit_de_RSSS = H_RSSS(X, y, lambda1, lambda2, ind_fun=H_pmom_laplace, N=150, C0=1, verbose=FALSE) # use corr(X, y)
+  # H_fit_de_RSSS = H_RSSS(X, y, lambda1, lambda2, ind_fun=H_pmom_laplace, N=150, C0=1, verbose=FALSE, method="working") # use working residual instead of y
   
   res_de_SSS = result(fit_de_SSS)
   H_res_de_RSSS = result(H_fit_de_RSSS)
