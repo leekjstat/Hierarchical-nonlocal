@@ -70,10 +70,11 @@ for(seed.num in 1:n.rep){
   
   # Run RSSS for hierarchical nonlocal prior
   set.seed(seed.num)
-  H_fit_de_SSS = H_RSSS(X, y, lambda1, lambda2, ind_fun=H_pmom_laplace, N=150, C0=1, verbose=FALSE)
+  H_fit_de_RSSS = H_RSSS(X, y, lambda1, lambda2, ind_fun=H_pmom_laplace, N=150, C0=1, verbose=FALSE)
+  # H_fit_de_RSSS = H_RSSS(X, y, lambda1, lambda2, ind_fun=H_pmom_laplace, N=150, C0=1, verbose=FALSE, method="working") # use working residual
   
   res_de_SSS = result(fit_de_SSS)
-  H_res_de_SSS = result(H_fit_de_SSS)
+  H_res_de_RSSS = result(H_fit_de_RSSS)
   
   ################ Comparision of variable selection methods ###################################
   X_train = X
@@ -81,7 +82,7 @@ for(seed.num in 1:n.rep){
   
   # Hierarchical nonlocal & nonlocal priors
   nonzerobetaid = (res_de_SSS$hppm)
-  H_nonzerobetaid = (H_res_de_SSS$hppm)
+  H_nonzerobetaid = (H_res_de_RSSS$hppm)
   H_nonlocalgamma <- nonlocalgamma <- rep(0, p)
   nonlocalgamma[nonzerobetaid] = 1
   H_nonlocalgamma[H_nonzerobetaid] = 1
